@@ -4,16 +4,19 @@ import dotenv from 'dotenv';
 import githubRoutes from './routes/github.js';
 import leetcodeRoutes from './routes/leetcode.js';
 import codeforcesRoutes from './routes/codeforces.js';
+import mediumRoutes from './routes/medium.js';
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/github', githubRoutes);
 app.use('/api/leetcode', leetcodeRoutes);
 app.use('/api/codeforces', codeforcesRoutes);
+app.use('/api/medium', mediumRoutes);
 
 
 app.get('/', (req, res) => {
